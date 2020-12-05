@@ -10,8 +10,16 @@ services:
 
     labels:
       - coredns.dockerdiscovery.host=deepspeech-server
+    
+    networks:
+      - public
 
     restart: unless-stopped
     deploy:
       mode: replicated
       replicas: 1
+
+
+networks:
+  public:
+    external: true
