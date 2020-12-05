@@ -1,0 +1,17 @@
+version: '3.5'
+
+services:
+  deepspeech-server:
+    image: romainsah/deepspeech-server
+    volumes:
+      - ./configfiles:/opt/deepspeech:ro
+    ports: 
+      - 8080:8080
+
+    labels:
+      - coredns.dockerdiscovery.host=deepspeech-server
+
+    restart: unless-stopped
+    deploy:
+      mode: replicated
+      replicas: 1
